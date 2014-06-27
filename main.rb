@@ -5,7 +5,8 @@ require File.expand_path('../download', __FILE__)
 require File.expand_path('../id_generator', __FILE__)
 
 gen = IdGenerator.new
-ids = gen.genIDs(1,10)
+#ids = gen.genIDs(2000,10)
+ids = gen.getOtherIDs('bitmap/')
 down = Download.new
 
 puts ids
