@@ -7,9 +7,12 @@ require File.expand_path('../id_generator', __FILE__)
 gen = IdGenerator.new
 #ids = gen.genIDs(2000,10)
 ids = gen.getOtherIDs('bitmap/')
-down = Download.new
 
 puts ids
+puts "ids length: #{ids.length}"
+
+down = Download.new
+
 ids.each do |id|
 
   params = {}
@@ -21,8 +24,6 @@ ids.each do |id|
   uri = URI.parse("http://tool.chinaz.com/qrcode/")
 
   res = Net::HTTP.post_form(uri, params)
-
-  puts id
 
   link = res.body.scan(/(qrcodeimg.*?)\'/).flatten
   down.down("http://tool.chinaz.com/" + link[0], id)

@@ -30,10 +30,12 @@ class IdGenerator
     dbres = db.execute('select id from ids')
 
     dbres.each do |record|
-      filename = record[0].to_s + '.jpg'
+      id = "%010d" % record[0]
+      filename = id + '.jpg'
       if !File.exists?(path + filename)
-        resArr.push(record[0])
+        resArr.push(id)
       end
     end
+    return resArr
   end
 end
