@@ -22,6 +22,8 @@ ids.each do |id|
 
   res = Net::HTTP.post_form(uri, params)
 
+  puts id
+
   link = res.body.scan(/(qrcodeimg.*?)\'/).flatten
   down.down("http://tool.chinaz.com/" + link[0], id)
 end
